@@ -1,7 +1,7 @@
 :root{
-    --primary-color: #1D5888;
-    --secondary-color: #FF9A3B; /*#1CA8FC-blue*/
-    --dark-color: #292929;
+    --primary-color: #3d3a3a;
+    --secondary-color: #BD1E2D; /*#1CA8FC-blue*/
+    --dark-color: #575658;
     --white-color: #dff3e4;
 }
 
@@ -19,6 +19,7 @@
 
 body {
     color:var(--dark-color);
+    background-color: #fff7f1;
 }
 
 nav {
@@ -80,6 +81,10 @@ code[class*="language-"], pre[class*="language-"] {
     height: 30px;
     margin-right: 10px;
     opacity: 0.4;
+}
+
+.btn-outline-dark:hover{
+    background-color: var(--secondary-color);
 }
 
 main>.container {
