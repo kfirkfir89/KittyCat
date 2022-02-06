@@ -61,16 +61,171 @@
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8 order-last order-lg-first">
                     <pre class="line-numbers"><code class="language-javascript">
-                        function helloWorld(){
-                            alert("hello world");
+                        //get the values from the page
+                        //start/controller function 
+                        function getValues(){
+                            //get the user values from the page
+                            let kittyValue = document.getElementById("kittyValue").value;
+                            let catValue = document.getElementById("catValue").value;
+                        
+                             //we need validate our input
+                            //parse into Integers 
+                            kittyValue = parseInt(kittyValue);
+                            catValue = parseInt(catValue);
+                        
+                            //check that the numbers are integers and if the values between 1 to 9
+                            if( (Number.isInteger(kittyValue) && Number.isInteger(catValue)) && 
+                            ((kittyValue > 0 && kittyValue <= 9) && (catValue > 0 && catValue <= 9))){
+                                //call check
+                                let results = checkMulti(kittyValue, catValue);
+                                //call display and write the values to the screen
+                                displayResults(results);
+                        
+                            }else{
+                                alert("must enter integers between 1 to 9");
+                            }
+                        
+                        }
+                        
+                        
+                        
+                        //check for multiple
+                        //logic function
+                        function checkMulti(kittyValue, catValue){
+                            let results =[];
+                        
+                            //loop from 1 to 100
+                            for ( let i = 1 ; i <= 100 ; i++){
+                                //check to see if divisible by both (3 and 5)
+                                //check to see if divisible by Kitty value (3)
+                                //check to see if divisible by Cat value (5)
+                                if (i % kittyValue == 0 && i % catValue == 0){
+                                    results.push('KittyCat');
+                                }else if(i % kittyValue == 0){
+                                    results.push('Kitty');
+                                }else if(i % catValue == 0){
+                                    results.push('Cat');
+                                }else{
+                                    results.push(i);
+                                }
+                            }
+                        
+                            return results;
+                        }
+                        
+                        //bollen with switch version
+                        function checkMultiB(kittyValue, catValue){
+                            let results = [];
+                            let Kitty = false;
+                            let Cat = false;
+                            for(let i = 1 ; i <= 100 ; i++){
+                        
+                                Kitty = i % kittyValue == 0;
+                                Cat = i % catValue == 0;
+                        
+                                switch(true){
+                                    case Kitty && Cat:{
+                                        results.push('KittyCat');
+                                        break;
+                                    }
+                                    case Kitty:{
+                                        results.push('Kitty');
+                                        break;
+                                    }
+                                    case Cat:{
+                                        results.push('Cat');
+                                        break;
+                                    }
+                                    default:{
+                                        results.push(i);
+                                        break;
+                                    }
+                                }
+                            }
+                            return results;
+                        }
+                        
+                        //"one line" version
+                        function checkMultiC(kittyValue, catValue){
+                            let results = [];
+                        
+                            for(let i = 1; i <=100; i++){
+                                let value = ((i%kittyValue == 0 ? 'Kitty' : '') + (i%catValue == 0 ? 'Cat' : '') || i );
+                                results.push(value);
+                            }
+                            return results;
+                        }
+                        
+                        
+                        //display the results
+                        //view function
+                        //loop over the array and create a tablerow for each item
+                        function displayResults(results){
+                        
+                            //get the table body element from the page
+                            let tableBody = document.getElementById("results");
+                        
+                            //get the template row
+                            let templateRow = document.getElementById("resultsTemplate");
+                        
+                            //clear table first
+                            tableBody.innerHTML = "";
+                        
+                            for (let index = 0 ; index < results.length ; index += 5){
+                        
+                                let tableRow = document.importNode(templateRow.content, true);
+                        
+                                //grab use the tds put into array
+                                let rowCols = tableRow.querySelectorAll("td");
+                        
+                                rowCols[0].classList.add(results[index]);
+                                rowCols[0].textContent = results[index];
+                        
+                                rowCols[1].classList.add(results[index+1]);
+                                rowCols[1].textContent = results[index+1];
+                        
+                                rowCols[2].classList.add(results[index+2]);
+                                rowCols[2].textContent = results[index+2];
+                        
+                                rowCols[3].classList.add(results[index+3]);
+                                rowCols[3].textContent = results[index+3];
+                        
+                                rowCols[4].classList.add(results[index+4]);
+                                rowCols[4].textContent = results[index+4];
+                        
+                        
+                                tableBody.appendChild(tableRow);
+                            }
+                        
                         }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structed in one function</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <h5>getValues</h5>
+                    <p><strong>getValues</strong> gets the value input for <strong>kittyValue</strong> and <strong>catValue</strong> from the page.
+                         then we check if the values are integers and are between 1 to 9.<br>
+                         If the values are not passed the if condition, alret message will appear to enter the corrent values.<br>
+                         We passes those values to <strong>checkMulti</strong>. The resulst stores in new varible and pass to <strong>displayResults</strong>.
+                        </p>
+                    <p class="KittyCat">There is 3 checkMulti function just for showing another ways to solves the challange.</p>
+                    <h5>checkMulti</h5>
+                    <p><strong>checkMulti</strong> takes in two parametes <strong>kittyValue</strong> and <strong>catValue</strong>.<br>
+                         We create variable <strong>results</strong> that holds an array. Then we loop from 1 to 100 and check if the number(<strong>i</strong>) can be divisible with one of our values or both.
+                         <br>If divisible by both (example: 3 and 5) we push to <strong>results</strong> array KittyCat.
+                         <br>If divisible by <strong>kittyValue</strong> (example: 3) we push to <strong>results</strong> array Kitty.
+                         <br>If divisible by <strong>catValue</strong> (example: 5) we push to <strong>results</strong> array Cat.
+                         <br>if not divisible by any of the values we push the <strong>i</strong> to <strong>results</strong> array.
+                         <br>We return the <strong>results</strong> array.
+                        </p>
+                    <h5>displayResults</h5>
+                    <p><strong>displayResults</strong> takes in <strong>results</strong> array.
+                        We declare two variables <strong>tableBody</strong> that will hold the html we will write to the page and <strong>templateRow</strong> to set up reuseable table template.
+                        <br>We loop into results array and declare new vatible <strong>tableRow</strong> to import the <strong>templateRow</strong> content.
+                        <br>We declare another new varible <strong>rowCols</strong> and stores the tds (table data tag).
+                        <br>Then we push the results values by index to each td (table data) and add it to <strong>tableBody</strong> to display.
+                        <p class="KittyCat">The classList we add to the rowCols is used to change the text colors when Kitty Cat appear by declare a class in css with the same "Kitty" "Cat" names.</p>
+                       </p>
                 </div>
             </div>
         </div>

@@ -87,6 +87,21 @@ code[class*="language-"], pre[class*="language-"] {
     background-color: var(--secondary-color);
 }
 
+.Kitty {
+    color:darkgreen;
+    font-weight: bold;
+}
+
+.Cat {
+    color:darkblue;
+    font-weight: bold;
+}
+
+.KittyCat {
+    color:red;
+    font-weight: bold;
+}
+
 main>.container {
     padding: 60px 15px 0;
     margin-bottom: 5rem;
