@@ -118,13 +118,8 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
     <script>
-        window.addEventListener('resize', iconSize())
-        function iconSize(){
-            if(screen.width <= 768){
+        if(screen.width <= 768){
             document.getElementById("iconSize").classList.add("smallfont");
-        }else{
-            document.getElementById("iconSize").classList.remove("smallfont");
-        }
         }
     </script>
 
