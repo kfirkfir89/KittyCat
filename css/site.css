@@ -13,9 +13,18 @@
     .smallfont{
         font-size: 1rem;
     }
-   
+    div >.fa-2x{
+        font-size: 4rem;
+    }
+
 }
 
+@media screen and (max-width:768px) {
+    .border-start
+    {
+      border:0px solid !important
+      }
+}
 
 body {
     color:var(--dark-color);
