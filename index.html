@@ -76,11 +76,11 @@
                    <hr>
                    <h5 class="fw-bold mt-3">
                        <div class="d-flex">
-                           <div class="row">
-                               <div class="col"><i class="fab fa-html5 fa-3x htmlicon"></i></div>
-                               <div class="col"><i class="fab fa-css3-alt fa-3x cssicon"></i></div>
-                               <div class="col"><i class="fab fa-js-square fa-3x jsicon"></i></div>
-                               <div class="col"><i class="fab fa-bootstrap fa-3x bsicon"></i></div>
+                           <div id="iconSize" class="row">
+                               <div id="iconHtml" classname="icon" class="col"><i class="fab fa-html5 fa-3x htmlicon"></i></div>
+                               <div id="iconCSS" class="col"><i class="fab fa-css3-alt fa-3x cssicon"></i></div>
+                               <div id="iconJs" class="col"><i class="fab fa-js-square fa-3x jsicon"></i></div>
+                               <div id="iconBs" class="col"><i class="fab fa-bootstrap fa-3x bsicon"></i></div>
                            </div>
                        </div>
                    </h5>
@@ -116,6 +116,16 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+    <script>
+        window.addEventListener('resize', iconSize())
+        function iconSize(){
+            if(screen.width <= 768){
+            document.getElementById("iconSize").classList.add("smallfont");
+        }else{
+            document.getElementById("iconSize").classList.remove("smallfont");
+        }
+        }
     </script>
 
 </body>

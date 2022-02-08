@@ -67,7 +67,7 @@
                         <br>You can also put in values from 1 to 9 to see your <strong>KITTYCAT</strong> matchs.
                     </h5>
                 </div>
-                <div class="col-lg-8 border-start">
+                <div id="borderCOL" class="col-lg-8 border-start">
                     <h5>Enter Values</h5>
                     <form class="row row-cols-1 row-cols-lg-2 gy-3 gx-2">
                         <div class="col">
@@ -135,6 +135,11 @@
     <script src="/js/site.js"></script>
     <script>
         document.getElementById("btnSubmit").addEventListener("click", getValues);
+    </script>
+    <script>
+        if(screen.width <= 768){
+            document.getElementById("borderCOL").classList.remove("border-start");
+        }
     </script>
     
 </body>

@@ -1,6 +1,7 @@
 //get the values from the page
 //start/controller function 
 function getValues(){
+
     //get the user values from the page
     let kittyValue = document.getElementById("kittyValue").value;
     let catValue = document.getElementById("catValue").value;
